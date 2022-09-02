@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="83cafc8a-c54b-430b-8e21-d0493a194624" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AssignmentDataForStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AssignmentDataForStudent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/StudentDashboardAssignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/StudentDashboardAssignment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ApiTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ApiTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AssignmentDataForStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AssignmentDataForStudent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/StudentDashboardAssignment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/StudentDashboardAssignment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ApiTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ApiTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,20 +40,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../123432/Robot_test" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
-  <component name="RunManager" selected="TestNG.ApiTests.assignmentForStudents">
-    <configuration name="ApiTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="API_course" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ApiTest" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="TestNG.ApiTests">
     <configuration name="ApiTests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="API_course" />
       <option name="PACKAGE_NAME" value="" />
@@ -73,6 +67,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ApiTests.calculateMarksForStudents" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="API_course" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ApiTests" />
+      <option name="METHOD_NAME" value="calculateMarksForStudents" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ApiTests.createAndGetStudents" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="API_course" />
       <option name="PACKAGE_NAME" value="" />
@@ -85,11 +91,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ApiTests.testCreateAndUpdateStudents" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="ApiTests.zassi1gnmentForStudents" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="API_course" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ApiTests" />
-      <option name="METHOD_NAME" value="testCreateAndUpdateStudents" />
+      <option name="METHOD_NAME" value="zassi1gnmentForStudents" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -99,11 +105,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.ApiTests.assignmentForStudents" />
         <item itemvalue="TestNG.ApiTests" />
+        <item itemvalue="TestNG.ApiTests.zassi1gnmentForStudents" />
         <item itemvalue="TestNG.ApiTests.createAndGetStudents" />
-        <item itemvalue="TestNG.ApiTests.testCreateAndUpdateStudents" />
-        <item itemvalue="TestNG.ApiTest" />
+        <item itemvalue="TestNG.ApiTests.assignmentForStudents" />
+        <item itemvalue="TestNG.ApiTests.calculateMarksForStudents" />
       </list>
     </recent_temporary>
   </component>
@@ -118,7 +124,7 @@
       <workItem from="1661103143692" duration="21000" />
       <workItem from="1661616021418" duration="167000" />
       <workItem from="1661683190261" duration="3949000" />
-      <workItem from="1662118638504" duration="10035000" />
+      <workItem from="1662118638504" duration="25861000" />
     </task>
     <servers />
   </component>
@@ -139,15 +145,11 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ApiTests.java</url>
-          <line>168</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ApiTests.java</url>
-          <line>163</line>
-          <option name="timeStamp" value="15" />
+        <line-breakpoint enabled="true" type="java-field">
+          <url>jar://$MAVEN_REPOSITORY$/io/rest-assured/rest-assured/5.1.1/rest-assured-5.1.1.jar!/io/restassured/internal/RequestSpecificationImpl.class</url>
+          <line>115</line>
+          <properties field="DEFAULT_HTTP_TEST_PORT" class="io.restassured.internal.RequestSpecificationImpl" />
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
