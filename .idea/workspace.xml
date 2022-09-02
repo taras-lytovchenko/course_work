@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83cafc8a-c54b-430b-8e21-d0493a194624" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/API_course.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ApiTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/HomeWorkAPI.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +29,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="TestNG.ApiTest">
+    <configuration name="ApiTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="API_course" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ApiTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HomeWorkAPI" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="API_course" />
       <option name="PACKAGE_NAME" value="" />
@@ -48,6 +54,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.ApiTest" />
         <item itemvalue="TestNG.HomeWorkAPI" />
       </list>
     </recent_temporary>
@@ -62,6 +69,7 @@
       <updated>1661103141679</updated>
       <workItem from="1661103143692" duration="21000" />
       <workItem from="1661616021418" duration="167000" />
+      <workItem from="1661683190261" duration="3949000" />
     </task>
     <servers />
   </component>
