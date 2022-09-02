@@ -4,7 +4,7 @@ public class Student extends StudentData{
     @JsonProperty
     public Integer id;
 
-    public Student(Integer id, String firstName, String lastName) {
+    public Student (Integer id, String firstName, String lastName) {
         super(firstName, lastName);
         this.id = id;
     }
