@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ApiTest extends BaseTest {
+public class ApiTests extends BaseTest {
     @Test
     public void createAndGetStudents() {
         // Student_1

@@ -6,11 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="83cafc8a-c54b-430b-8e21-d0493a194624" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ApiTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,6 +78,7 @@
       <workItem from="1661103143692" duration="21000" />
       <workItem from="1661616021418" duration="167000" />
       <workItem from="1661683190261" duration="3949000" />
+      <workItem from="1662118638504" duration="269000" />
     </task>
     <servers />
   </component>
