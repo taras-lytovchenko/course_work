@@ -1,5 +1,7 @@
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Random;
+
 public class Student extends StudentData{
     @JsonProperty
     public Integer id;
@@ -18,5 +20,8 @@ public class Student extends StudentData{
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
+    }
+    public static StudentData createStudent(String firstName, String lastName) {
+        return new StudentData(firstName, lastName);
     }
 }

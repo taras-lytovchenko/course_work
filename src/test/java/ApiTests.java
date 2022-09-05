@@ -4,7 +4,6 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.Type;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -13,59 +12,43 @@ public class ApiTests extends BaseTest {
     @Test
     public void createAndGetStudents() {
         // Student_1
-        Response stud1CreateResponse = RestAssured.given()
-                .body(new StudentData("Mike", "Milann"))
-                .post("/students");
-        stud1CreateResponse.then().statusCode(200);
-        Student stud1 = stud1CreateResponse.as(Student.class);
-        Response stud1GetResponse = RestAssured.get("/students/{id}", stud1.id);
-        Student receivedStud1 = stud1GetResponse.as(Student.class);
-        Assert.assertEquals(receivedStud1.firstName, "Mike");
-        Assert.assertEquals(receivedStud1.lastName, "Milann");
+        Student createdFirstStudent = createStudent("Mike",  "Milann");
+        Response getFirstStudent = RestAssured.get("/students/{id}", createdFirstStudent.id);
+        Student receivedFirstStudent = getFirstStudent.as(Student.class);
+        Assert.assertEquals(receivedFirstStudent.firstName, createdFirstStudent.firstName);
+        Assert.assertEquals(receivedFirstStudent.lastName, createdFirstStudent.lastName);
         // Student_2
-        Response stud2CreateResponse = RestAssured.given()
-                .body(new StudentData("Ella", "Maven"))
-                .post("/students");
-        stud2CreateResponse.then().statusCode(200);
-        Student stud2 = stud2CreateResponse.as(Student.class);
-        Response st2GetResponse = RestAssured.get("/students/{id}", stud2.id);
-        Student receivedStud2 = st2GetResponse.as(Student.class);
-        Assert.assertEquals(receivedStud2.firstName, "Ella");
-        Assert.assertEquals(receivedStud2.lastName, "Maven");
+        Student createdSecondStudent = createStudent("Ella", "Maven");
+        Response getSecondStudent = RestAssured.get("/students/{id}", createdSecondStudent.id);
+        Student receivedSecondStudent = getSecondStudent.as(Student.class);
+        Assert.assertEquals(receivedSecondStudent.firstName, createdSecondStudent.firstName);
+        Assert.assertEquals(receivedSecondStudent.lastName, createdSecondStudent.lastName);
         // Student_3
-        Response stud3CreateResponse = RestAssured.given()
-                .body(new StudentData("Sara", "Ganen"))
-                .post("/students");
-        stud3CreateResponse.then().statusCode(200);
-        Student stud3 = stud3CreateResponse.as(Student.class);
-        Response stud3GetResponse = RestAssured.get("/students/{id}", stud3.id);
-        Student receivedStud3 = stud3GetResponse.as(Student.class);
-        Assert.assertEquals(receivedStud3.firstName, "Sara");
-        Assert.assertEquals(receivedStud3.lastName, "Ganen");
+        Student createdThirdStudent = createStudent("Sara", "Ganen");
+        Response getThirdStudent = RestAssured.get("/students/{id}", createdThirdStudent.id);
+        Student receivedThirdStudent = getThirdStudent.as(Student.class);
+        Assert.assertEquals(receivedThirdStudent.firstName, createdThirdStudent.firstName);
+        Assert.assertEquals(receivedThirdStudent.lastName, createdThirdStudent.lastName);
         // Show all information about students
         Student[] allStudents = RestAssured.get("/students").as(Student[].class);
         Assert.assertEquals(allStudents.length, 3);
-        //    System.out.println(Arrays.asList(allStudents));
+//            System.out.println(Arrays.asList(allStudents));
     }
 
     @Test
     public void testCreateAndUpdateStudent() {
-        Response stud4CreateResponse = RestAssured.given()
-                .body(new StudentData("Savid", "Kromkan"))
-                .post("/students");
-        stud4CreateResponse.then().statusCode(200);
-        Student stud4 = stud4CreateResponse.as(Student.class);
-        Response stud4GetResponse = RestAssured.get("/students/{id}", stud4.id);
-        Student receivedStud4 = stud4GetResponse.as(Student.class);
-        Assert.assertEquals(receivedStud4.firstName, "Savid");
-        Assert.assertEquals(receivedStud4.lastName, "Kromkan");
+        Student createdFourthStudent = createStudent("Savid", "Kromkan");
+        Response getFourthStudent = RestAssured.get("/students/{id}", createdFourthStudent.id);
+        Student receivedFourthStudent = getFourthStudent.as(Student.class);
+        Assert.assertEquals(receivedFourthStudent.firstName, createdFourthStudent.firstName);
+        Assert.assertEquals(receivedFourthStudent.lastName, createdFourthStudent.lastName);
 
         RestAssured.given()
                 .body(new StudentData("ChangedName", "ChangedLastName"))
-                .put("/students/{id}", stud4.id)
+                .put("/students/{id}", receivedFourthStudent.id)
                 .then().statusCode(200);
 
-        Student studentGetResponse = RestAssured.get("/students/{id}", stud4.id).as(Student.class);
+        Student studentGetResponse = RestAssured.get("/students/{id}", receivedFourthStudent.id).as(Student.class);
         Assert.assertEquals(studentGetResponse.firstName, "ChangedName");
         Assert.assertEquals(studentGetResponse.lastName, "ChangedLastName");
 //        System.out.println(Arrays.asList(studentGetResponse));
@@ -73,32 +56,35 @@ public class ApiTests extends BaseTest {
 
     @Test
     public void testSearchStudentByFirstName() {
+        Student createdFifthStudent = createStudent("Sarancha", "Geity");
         Response response = RestAssured.given()
-                .queryParam("name", "Sara")
+                .queryParam("name", createdFifthStudent.firstName)
                 .when().get("/students");
         response.then().statusCode(200);
         Student[] searchResult = response.as(Student[].class);
         Assert.assertEquals(searchResult.length, 1);
         Set<String> names = Arrays.stream(searchResult).map(s -> s.firstName).collect(Collectors.toSet());
-        Assert.assertEquals(names, Set.of("Sara"));
+        Assert.assertEquals(names, Set.of(createdFifthStudent.firstName));
     }
 
     @Test
     public void testSearchStudentByLastName() {
+        Student createdSixthStudent = createStudent("Eddi", "Gilbert");
         Response response = RestAssured.given()
-                .queryParam("last_name", "Milann")
+                .queryParam("last_name", createdSixthStudent.lastName)
                 .when().get("/students");
         response.then().statusCode(200);
         Student[] searchResult = response.as(Student[].class);
         Assert.assertEquals(searchResult.length, 1);
         Set<String> lastnames = Arrays.stream(searchResult).map(s -> s.lastName).collect(Collectors.toSet());
-        Assert.assertEquals(lastnames, Set.of("Milann"));
+        Assert.assertEquals(lastnames, Set.of(createdSixthStudent.lastName));
     }
 
     @Test
-    public void testGetStudentsList() {
+    public void zlasttestGetStudentsList() {
+
         Student[] allStudents = RestAssured.get("/students").as(Student[].class);
-        Assert.assertEquals(allStudents.length, 4);
+        Assert.assertEquals(allStudents.length, 8);
     }
 
     @Test
@@ -132,38 +118,38 @@ public class ApiTests extends BaseTest {
     }
 
     @Test
-    public void zassignmentForStudents() {
-        Integer student;
-        Integer content;
+    public void testAssignmentForStudents() {
+        Integer studentId;
+        Integer contentId;
 
         //Назначение заданий и загрузка решения к нему
         Student[] getAllStudents = RestAssured.get("/students").as(Student[].class);
-        Assert.assertEquals(getAllStudents.length, 6);
+        Assert.assertEquals(getAllStudents.length, 3);
         RestAssured.given()
                 .body(new AssignmentContent("CreateApiTest"))
                 .post("/content")
                 .then().statusCode(200);
         AssignmentContent[] allAssignmentContent = RestAssured.get("/content").as(AssignmentContent[].class);
         for (int i = 0; i < getAllStudents.length; i++) {
-            content = allAssignmentContent[0].id;
-            student = getAllStudents[i].id;
+            contentId = allAssignmentContent[0].id;
+            studentId = getAllStudents[i].id;
 
 
-            JSONObject joAssignmPost = new JSONObject();
-            joAssignmPost.put("target_type", "student");
-            joAssignmPost.put("student_id", student);
-            joAssignmPost.put("content_id", content);
+            JSONObject jsonData = new JSONObject();
+            jsonData.put("target_type", "student");
+            jsonData.put("student_id", studentId);
+            jsonData.put("content_id", contentId);
 
             StudentDashboardAssignment assignmentForStudent = RestAssured.given()
-                    .body(joAssignmPost.toString())
+                    .body(jsonData.toString())
                     .post("/assignments")
                     .then().statusCode(200)
                     .extract().as(StudentDashboardAssignment.class);
 
 //            System.out.println(assignmentForStudent.solution);
 
-            Assert.assertEquals(assignmentForStudent.studentId, student);
-            Assert.assertEquals(assignmentForStudent.contentId, content);
+            Assert.assertEquals(assignmentForStudent.studentId, studentId);
+            Assert.assertEquals(assignmentForStudent.contentId, contentId);
 
             JSONObject solutionPost = new JSONObject();
             solutionPost.put("solution", "Test");
@@ -188,33 +174,26 @@ public class ApiTests extends BaseTest {
     }
 
     @Test
-    public void zassi1gnmentForStudents() {
+    public void testMarkStudents() {
         Integer student;
         Integer content;
-        Response stud1CreateResponse = RestAssured.given()
-                .body(new StudentData("Zina", "Sory"))
-                .post("/students");
-        stud1CreateResponse.then().statusCode(200);
-        Student stud1 = stud1CreateResponse.as(Student.class);
-        Response stud1GetResponse = RestAssured.get("/students/{id}", stud1.id);
-        Student receivedStud1 = stud1GetResponse.as(Student.class);
-        Assert.assertEquals(receivedStud1.firstName, "Zina");
+        Student createdSeventhStudent = createStudent("Zina", "Sory");
+        Response getSeventhStudent = RestAssured.get("/students/{id}", createdSeventhStudent.id);
+        Student receivedSeventhStudent = getSeventhStudent.as(Student.class);
+        Assert.assertEquals(receivedSeventhStudent.firstName, createdSeventhStudent.firstName);
+        Assert.assertEquals(receivedSeventhStudent.lastName, createdSeventhStudent.lastName);
         // Student_2
-        Response stud2CreateResponse = RestAssured.given()
-                .body(new StudentData("Gor", "Ramen"))
-                .post("/students");
-        stud2CreateResponse.then().statusCode(200);
-        Student stud2 = stud2CreateResponse.as(Student.class);
-        Response st2GetResponse = RestAssured.get("/students/{id}", stud2.id);
-        Student receivedStud2 = st2GetResponse.as(Student.class);
-        Assert.assertEquals(receivedStud2.firstName, "Gor");
-        Assert.assertEquals(receivedStud2.lastName, "Ramen");
+        Student createdEightStudent = createStudent("Gor", "Ramen");
+        Response getEightStudent = RestAssured.get("/students/{id}", createdEightStudent.id);
+        Student receivedEightStudent = getEightStudent.as(Student.class);
+        Assert.assertEquals(receivedEightStudent.firstName, createdEightStudent.firstName);
+        Assert.assertEquals(receivedEightStudent.lastName, createdEightStudent.lastName);
 
         //Assigning tasks
         Student[] getAllStudents = RestAssured.get("/students").as(Student[].class);
         Assert.assertEquals(getAllStudents.length, 6);
         RestAssured.given()
-                .body(new AssignmentContent("CreateApiTest"))
+                .body(new AssignmentContent("NewCreateApiTest"))
                 .post("/content")
                 .then().statusCode(200);
         AssignmentContent[] allAssignmentContent = RestAssured.get("/content").as(AssignmentContent[].class);
@@ -223,18 +202,16 @@ public class ApiTests extends BaseTest {
             content = allAssignmentContent[0].id;
             student = getAllStudents[i].id;
 
-            JSONObject joAssignmPost = new JSONObject();
-            joAssignmPost.put("target_type", "student");
-            joAssignmPost.put("student_id", student);
-            joAssignmPost.put("content_id", content);
+            JSONObject jsonData = new JSONObject();
+            jsonData.put("target_type", "student");
+            jsonData.put("student_id", student);
+            jsonData.put("content_id", content);
 
             StudentDashboardAssignment assignmentForStudent = RestAssured.given()
-                    .body(joAssignmPost.toString())
+                    .body(jsonData.toString())
                     .post("/assignments")
                     .then().statusCode(200)
                     .extract().as(StudentDashboardAssignment.class);
-
-//            System.out.println(assignmentForStudent.solution);
 
             Assert.assertEquals(assignmentForStudent.studentId, student);
             Assert.assertEquals(assignmentForStudent.contentId, content);
@@ -267,19 +244,18 @@ public class ApiTests extends BaseTest {
                         student = getAllStudents[i].id;
 
                         JSONObject joAssignmPostRepeat = new JSONObject();
-                        joAssignmPost.put("target_type", "student");
-                        joAssignmPost.put("student_id", student);
-                        joAssignmPost.put("content_id", content);
+                        jsonData.put("target_type", "student");
+                        jsonData.put("student_id", student);
+                        jsonData.put("content_id", content);
 
                         StudentDashboardAssignment assignmentForStudentRepeat = RestAssured.given()
-                                .body(joAssignmPost.toString())
+                                .body(jsonData.toString())
                                 .post("/assignments")
                                 .then().statusCode(200)
                                 .extract().as(StudentDashboardAssignment.class);
 
                         Assert.assertNull(assignmentForStudent.mark);
-                    }
-                    else if (markForStudent.mark == null) {
+                    } else if (markForStudent.mark == null) {
 
                         int oldMark = assignmentForStudent.mark;
 
@@ -287,12 +263,12 @@ public class ApiTests extends BaseTest {
                         student = getAllStudents[i].id;
 
                         JSONObject joAssignmPostRepeat = new JSONObject();
-                        joAssignmPost.put("target_type", "student");
-                        joAssignmPost.put("student_id", student);
-                        joAssignmPost.put("content_id", content);
+                        jsonData.put("target_type", "student");
+                        jsonData.put("student_id", student);
+                        jsonData.put("content_id", content);
 
                         StudentDashboardAssignment assignmentForStudentRepeat = RestAssured.given()
-                                .body(joAssignmPost.toString())
+                                .body(jsonData.toString())
                                 .post("/assignments")
                                 .then().statusCode(200)
                                 .extract().as(StudentDashboardAssignment.class);
@@ -303,4 +279,17 @@ public class ApiTests extends BaseTest {
             }
         }
     }
+
+    private Student createStudent(String firstName, String lastName) {
+        StudentData studentData =  Student.createStudent(firstName, lastName);
+
+        Response studentCreateResponse = RestAssured.given()
+                .body(studentData)
+                .post("/students");
+        studentCreateResponse.then().statusCode(200);
+
+        return studentCreateResponse.as(Student.class);
+    }
+
+
 }
