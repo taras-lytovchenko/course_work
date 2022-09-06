@@ -5,23 +5,14 @@ public class AssignmentDataForStudent {
     public String targetType;
 
     @JsonProperty("student_id")
-    public Integer studentId;
+    public String studentId;
 
     @JsonProperty("content_id")
-    public Integer contentId;
+    public String contentId;
 
-    public AssignmentDataForStudent(String targetType, Integer studentId, Integer contentId) {
+    public AssignmentDataForStudent(String targetType, String studentId, String contentId) {
         this.targetType = targetType;
         this.studentId = studentId;
         this.contentId = contentId;
-    }
-
-    @Override
-    public String toString() {
-        return "AssignmentForGroup{" +
-                "target_type='" + targetType + '\'' +
-                ", student_id=" + studentId +
-                ", content_id=" + contentId +
-                '}';
     }
 }
